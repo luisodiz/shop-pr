@@ -1,0 +1,7 @@
+@use './variables';
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  font-family: Roboto, sans-serif;
+  color: variables.$primary-color;
+}
