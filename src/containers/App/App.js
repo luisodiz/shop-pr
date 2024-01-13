@@ -1,5 +1,5 @@
-import Header from '../../components/Header';
-import ProductsPage from '../ProductsPage';
+import Header from '@/components/Header';
+import ProductsPage from '@containers/ProductsPage';
 
 import styles from './App.module.scss';
 

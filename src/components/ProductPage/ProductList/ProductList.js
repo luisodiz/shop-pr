@@ -1,17 +1,21 @@
-import Product from '../../Product';
+import Product from '@components/Product';
 
 import { Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
 
 const ProductList = ({products}) => {
   return (
     <div>
       <Row className={styles.products}>
-        {products && products.map((product, idx) => <Product key={idx} {...product}/>)}
+        {products && products.map((product) => <Product key={product.id} {...product}/>)}
       </Row>
-      {products ? <h1>Есть товары</h1> : <h1>Нет товаров</h1>}
     </div>
   );
 };
 
 export default ProductList;
+
+ProductList.propTypes = {
+  products: PropTypes.array
+};

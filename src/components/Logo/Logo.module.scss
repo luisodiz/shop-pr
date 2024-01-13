@@ -1,0 +1,15 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  img {
+    width: 70px;
+    margin-right: 7px;
+  }
+
+  span {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+  }
+}

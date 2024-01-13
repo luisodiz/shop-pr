@@ -1,22 +1,11 @@
 import cn from 'classnames';
 import { Col, Card, Image, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import styles from './Product.module.scss';
 
 const Product = ({name, price, quantity, picture}) => {
-  const getPriceFormat = () => {
-    const priceFormat = new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: 'RUB',
-      maximumFractionDigits: 0,
-    });
-
-    return function(price) {
-      return priceFormat.format(price);
-    };
-  };
-
-  const convertPriceToRub = getPriceFormat();
+  const priceFormat = new Intl.NumberFormat('ru-RU');
 
   return (
     <Col xl={3} lg={4} md={6} className={styles.ProductCol}>
@@ -31,7 +20,7 @@ const Product = ({name, price, quantity, picture}) => {
         </div>
         <div className={styles['Product-Details']}>
           <h3 className={styles['Product-Name']}>{name}</h3>
-          <span className={styles['Product-Price']}>{convertPriceToRub(price)}</span>
+          <span className={styles['Product-Price']}>{priceFormat.format(price)} руб.</span>
         </div>
         <div className={styles.ProductActions}>
           {
@@ -53,3 +42,10 @@ const Product = ({name, price, quantity, picture}) => {
 };
 
 export default Product;
+
+Product.propTypes = {
+  name: PropTypes.string,
+  picture: PropTypes.string,
+  price: PropTypes.number,
+  quantity: PropTypes.number
+};
