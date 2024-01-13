@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^5.3.2",
     "classnames": "^2.5.1",
+    "cors-anywhere": "^0.4.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.2",
     "react-dom": "^18.2.0",
@@ -12,10 +13,12 @@
     "sass": "^1.69.7"
   },
   "scripts": {
+    "dev": "npm-run-all -p start serve",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "node node_server/index"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
