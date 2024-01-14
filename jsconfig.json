@@ -7,7 +7,8 @@
       "@containers/*": ["./src/containers/*"],
       "@constants/*": ["./src/constants/*"],
       "@hoc/*": ["./src/hoc/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@store/*": ["./src/store/*"]
     }
   }
 }

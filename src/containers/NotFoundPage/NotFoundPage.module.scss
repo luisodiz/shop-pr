@@ -1,0 +1,22 @@
+@use '../../utils/scss/variables';
+
+.NotFound {
+  &-Error {
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    color: burlywood;
+  }
+
+  &-Back {
+    display: block;
+    margin-top: 4px;
+    text-align: center;
+    font-size: 14px;
+    color: variables.$primary-color;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

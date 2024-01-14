@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import styles from './Product.module.scss';
 
-const Product = ({name, price, quantity, picture}) => {
+const Product = ({product, handleAddToCart, handleAddToFavorites}) => {
+  const { name, price, quantity, picture, inCart, inFavorites} = product;
   const priceFormat = new Intl.NumberFormat('ru-RU');
 
   return (
@@ -27,8 +28,26 @@ const Product = ({name, price, quantity, picture}) => {
             quantity
               ? (
                 <>
-                  <Button className={cn(styles['ProductActions-Button'], styles['ProductActions-Button_addToCart'])}>В корзину</Button>
-                  <Button className={cn(styles['ProductActions-Button'], styles['ProductActions-Button_addToFavorites'])}>В избранное</Button>
+                  <Button
+                    className={
+                      cn(styles['ProductActions-Button'],
+                      styles['ProductActions-Button_addToCart'],
+                      inCart ? styles['ProductActions-Button_disabled'] : '')
+                    }
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    {!inCart ? 'В корзину': 'В корзине'}
+                  </Button>
+                  <Button
+                    className={
+                      cn(styles['ProductActions-Button'],
+                      styles['ProductActions-Button_addToFavorites'],
+                      inFavorites ? styles['ProductActions-Button_disabled'] : '')
+                  }
+                    onClick={() => handleAddToFavorites(product)}
+                  >
+                    {!inFavorites ? 'В избранное': 'В избранном'}
+                  </Button>
                 </>
               )
               : (

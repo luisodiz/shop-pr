@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ProductList from '@/components/ProductPage/ProductList';
-import { Container } from 'react-bootstrap';
 
 import { API_GOODS } from '@/constants/api';
 import { getApiResource } from '@/utils/js/network';
 import { withErrorApi } from '@/hoc/withErrorApi';
-import uniqid from 'uniqid';
+import { addAllProducts } from '@store/products/products-actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAllProducts } from '@store/products/products-selectors';
+
 
 const ProductsPage = ({setErrorApi}) => {
-  const [products, setProducts] = useState(null);
+  const products = useSelector(selectAllProducts);
+  const dispatch = useDispatch();
 
   const getResource = async (url) => {
     const res = await getApiResource(url);
 
     if (res) {
-      const items = res.items.map(item => ({
-        ...item,
-        id: uniqid()
-      }));
-      setProducts(items);
+      dispatch(addAllProducts(res.items));
       setErrorApi(false);
     } else {
       setErrorApi(true);
@@ -26,13 +25,13 @@ const ProductsPage = ({setErrorApi}) => {
   };
 
   useEffect(() => {
-    getResource(API_GOODS);
+    if (!products.length) {
+      getResource(API_GOODS);
+    }
   }, []);
 
   return (
-    <Container>
-      <ProductList products={products}/>
-    </Container>
+    <ProductList />
   );
 };
 

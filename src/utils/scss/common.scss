@@ -6,9 +6,17 @@ body {
   color: variables.$primary-color;
 }
 
+.wrapper {
+  padding-top: 20px;
+}
+
 img {
   max-width: 100%;
   height: auto;
+}
+
+h1 {
+  font-size: 25px;
 }
 
 h3 {
