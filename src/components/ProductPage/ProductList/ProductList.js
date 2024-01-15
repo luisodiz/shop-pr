@@ -28,7 +28,7 @@ const ProductList = () => {
   return (
     <div>
       <Row className={styles.products}>
-        {allProducts.length && allProducts.map((product) =>
+        {allProducts && allProducts.length > 0 && allProducts.map((product) =>
           <Product
             key={product.id}
             product={product}
